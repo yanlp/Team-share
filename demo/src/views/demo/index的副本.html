@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <!--  -->
+	<style lang="scss">
+	    a{
+	        display:inline-block;
+	        padding:5px 10px;
+	        color:#0a62b5;
+	        text-decoration: none;
+	        cursor: pointer;
+	    }
+	</style> 
+</head>
+<body>
+
+<div id="annthorWay">
+     <p>message:{{ message }}</p>
+     <a href="javacript:;" @click="update">更新</a>
+    <a href="javacript:;" @click="destroy">销毁</a>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/vue/2.1.3/vue.js"></script>
+<script type="text/javascript">
+    // import Vue from 'vue';
+  var app = new Vue({
+      el: '#annthorWay',
+      data: {
+          message:"this is a test Data!!",
+          isDestroy:false
+      },
+   	 beforeCreate: function () {
+        console.group('this is beforeCreate ===============》');
+        console.log("%c%s", "color:red" , "el     : " + this.$el); //undefined
+        console.log("%c%s", "color:red","data   : " + this.$data); //undefined 
+        console.log("%c%s", "color:red","message: " + this.message);// undefined
+    },
+    created: function () {
+        console.group('this is created ===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el); //undefined
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化 
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化
+    },
+    beforeMount: function () {
+        console.group('this is beforeMount ===============》');
+        console.log("%c%s", "color:red","el     : " + (this.$el)); //undefined
+        console.log(this.$el);
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化  
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化  
+    },
+    mounted: function () {
+        console.group('this is mounted ===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el); //已被初始化
+        console.log(this.$el);    
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化 
+    },
+    beforeUpdate: function () {
+        console.group('this is beforeUpdate ===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);   
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    updated: function () {
+        console.group('this is updated ===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el); 
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    beforeDestroy: function () {
+        console.group('this is beforeDestroy ===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);    
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    destroyed: function () {
+        console.group('this is destroyed ===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);  
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message)
+    },
+     methods: {
+        update(e){
+            e.preventDefault();
+            if(!this.isDestroy){
+                console.log("数据本正常更新")
+                console.log("%c%s","color:green",this.$el)
+                console.log(this.$el,this.$data);
+            } else {
+                console.log("组件被销毁~~")
+                console.log("%c%s","color:red",this.$el);
+                console.log(this.$el,this.$data);
+            }
+            this.message = "这是更新后的数据~~"
+        },
+        destroy(e){
+            e.preventDefault();
+            this.message = "数据被销毁了~~";
+            setTimeout(function(){
+                this.$destroy();
+                this.isDestroy = true;
+            }.bind(this),1000)
+        }
+    }
+})
+</script>
+</body>
+</html>
