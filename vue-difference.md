@@ -134,7 +134,7 @@
 
  |    |     |
  |:---|:---:|
- |![换一种方式过程](./assets/img/ather.png)|  null  |
+ |![换一种方式过程](./assets/img/ather.png)|![换一种方式过程](./assets/img/blank.png)  |
 
 > 总结 console 结果
 
