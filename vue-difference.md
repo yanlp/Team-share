@@ -106,12 +106,12 @@
     }
 </script>
 ```
+
  | | |
  |:---|:---:|
  |![页面初始渲染过程](./assets/img/init.png)|![页面更新渲染过程](./assets/img/update.png)|
  |![页面更新+销毁渲染过程](./assets/img/update+destroy.png)|![页面销毁后过程](./assets/img/destroyed.png)|
  
-
 >PS: 这种创建实例的方法中 beforeMount 打印的结果，与预期不符合???? why!!!;
 
 ### 换一种创建实例的方式
@@ -132,11 +132,14 @@
     </script>
 ```
 
- ![换一种方式过程](./assets/img/ather.png)
+    | | |
+ |:---|:---:|
+ |![换一种方式过程](./assets/img/ather.png)| |
 
 > 总结 console 结果
 
 **beforeCreate:**  即将创建,此阶段为组件实例初始化之后，此时的数据观察和事件机制都未形成 
+
 **created:** 组件实例已经创建完成之后被调用。在这一步，实例已完成以下的配置：数据观测(data observer)，属性和方法的运算， watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。  
    > > 首先，运行new Vue()的时候，会进入代码src/core/instance/index.js的Vue构造方法中，并执行this._init()方法。在_init中，会对各个功能进行初始化，并执行beforeCreate和created两个生命周期方法。核心代码如下:     
    
