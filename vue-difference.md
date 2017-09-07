@@ -107,10 +107,7 @@
 </script>
 ```
 
- ![页面初始渲染过程](./assets/img/init.png)
- ![页面更新渲染过程](./assets/img/update.png)
- ![页面更新+销毁渲染过程](./assets/img/update+destroy.png)
- ![页面销毁后过程](./assets/img/destroyed.png)
+ |![页面初始渲染过程](./assets/img/init.png)|![页面更新渲染过程](./assets/img/update.png)|![页面更新+销毁渲染过程](./assets/img/update+destroy.png)|![页面销毁后过程](./assets/img/destroyed.png)
 
 >PS: 这种创建实例的方法中 beforeMount 打印的结果，与预期不符合???? why!!!;
 
