@@ -29,73 +29,72 @@
 ---
 ## 2、探究生命周期
 vue 生命周期图及表格依然醒目的展示了，各钩子函数的执行顺序，现在探究具体钩子函数的执行过程；
-```
-<code javascript>
-	<script>
-		data(){
-	    	return {
-	    		message:"this is a test Data!!",
-	            isDestroy:false
-	    	}
-	    }, 
-	    beforeCreate: function () {
-	        console.group('beforeCreate 组件创建前状态===============》');
-	        console.log("%c%s", "color:red" , "el     : " + this.$el); //undefined
-	        console.log("%c%s", "color:red","data   : " + this.$data); //undefined 
-	        console.log("%c%s", "color:red","message: " + this.message);// undefined
-	    },
-	    created: function () {
-	        console.group('created 组件创建完毕状态===============》');
-	        console.log("%c%s", "color:red","el     : " + this.$el); //undefined
-	        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化 
-	        console.log("%c%s", "color:red","message: " + this.message); //已被初始化
-	    },
-	    beforeMount: function () {
-	        console.group('beforeMount 挂载前状态===============》');
-	        console.log("%c%s", "color:red","el     : " + (this.$el)); //已被初始化
-	        console.log(this.$el);
-	        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化  
-	        console.log("%c%s", "color:red","message: " + this.message); //已被初始化  
-	    },
-	    mounted: function () {
-	        console.group('mounted 挂载结束状态===============》');
-	        console.log("%c%s", "color:red","el     : " + this.$el); //已被初始化
-	        console.log(this.$el);    
-	        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
-	        console.log("%c%s", "color:red","message: " + this.message); //已被初始化 
-	    },
-	    beforeUpdate: function () {
-	        console.group('beforeUpdate 更新前状态===============》');
-	        console.log("%c%s", "color:red","el     : " + this.$el);
-	        console.log(this.$el);   
-	        console.log("%c%s", "color:red","data   : " + this.$data); 
-	        console.log("%c%s", "color:red","message: " + this.message); 
-	    },
-	    updated: function () {
-	        console.group('updated 更新完成状态===============》');
-	        console.log("%c%s", "color:red","el     : " + this.$el);
-	        console.log(this.$el); 
-	        console.log("%c%s", "color:red","data   : " + this.$data); 
-	        console.log("%c%s", "color:red","message: " + this.message); 
-	    },
-	    beforeDestroy: function () {
-	        console.group('beforeDestroy 销毁前状态===============》');
-	        console.log("%c%s", "color:red","el     : " + this.$el);
-	        console.log(this.$el);    
-	        console.log("%c%s", "color:red","data   : " + this.$data); 
-	        console.log("%c%s", "color:red","message: " + this.message); 
-	    },
-	    destroyed: function () {
-	        console.group('destroyed 销毁完成状态===============》');
-	        console.log("%c%s", "color:red","el     : " + this.$el);
-	        console.log(this.$el);  
-	        console.log("%c%s", "color:red","data   : " + this.$data); 
-	        console.log("%c%s", "color:red","message: " + this.message)
-	    }
-	</script>
-</code>
-
+```script
+	data(){
+    	return {
+    		message:"this is a test Data!!",
+            isDestroy:false
+    	}
+    }, 
+    beforeCreate: function () {
+        console.group('beforeCreate 组件创建前状态===============》');
+        console.log("%c%s", "color:red" , "el     : " + this.$el); //undefined
+        console.log("%c%s", "color:red","data   : " + this.$data); //undefined 
+        console.log("%c%s", "color:red","message: " + this.message);// undefined
+    },
+    created: function () {
+        console.group('created 组件创建完毕状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el); //undefined
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化 
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化
+    },
+    beforeMount: function () {
+    	console.log(document.querySelector(""))
+        console.group('beforeMount 挂载前状态===============》');
+        console.log("%c%s", "color:red","el     : " + (this.$el)); //已被初始化
+        console.log(this.$el);
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化  
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化  
+    },
+    mounted: function () {
+        console.group('mounted 挂载结束状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el); //已被初始化
+        console.log(this.$el);    
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化 
+    },
+    beforeUpdate: function () {
+        console.group('beforeUpdate 更新前状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);   
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    updated: function () {
+        console.group('updated 更新完成状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el); 
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    beforeDestroy: function () {
+        console.group('beforeDestroy 销毁前状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);    
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    destroyed: function () {
+        console.group('destroyed 销毁完成状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);  
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message)
+    }
 ```
 
-> 总结console结果
-	<font color="red">beforeCreate:</font>
+
+> 总结console结果	
+	* <strong color="red">beforeCreate:</strong>dom $el 和 属性data 并未初始化 
+	* <strong color="red">created:</strong>组件创建完毕,组件属性被初始化
+	* <strong color="red">beforeMount:</strong>模板挂在之前
