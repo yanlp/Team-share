@@ -1,5 +1,5 @@
 # VUE 1.0 迁移 2.0 所遇到的洼地
-##1、生命周期对比表格
+## 1、生命周期对比表格
 <div style="display: block;width: 700px;max-height: 800px;white-space: nowrap;">
 	<span style="display: inline-block; width: 300px">
 		<img src="./assets/img/lifecycle-vue1.png" alt="vue1.x 生命周期图" width="400" height="600">
@@ -27,7 +27,7 @@
 | destroy 		| destroy 		|	组件被销毁后调用															|
 
 ---
-##2、探究生命周期
+## 2、探究生命周期
 vue 生命周期图及表格依然醒目的展示了，各钩子函数的执行顺序，现在探究具体钩子函数的执行过程；
 ```
 <code javascript>
