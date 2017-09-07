@@ -9,6 +9,7 @@
 	</span>
 </div>
 
-|	vue1.x		| 	vue2.x   	|	 		基本描述		|
-|	:---		|		---	 	|		---				|
-|	init		| beforeCreate  |		vjk 			|
+|	vue1.x		| 	vue2.x   	|	 		基本描述				|
+|	:---		|		---	 	|		     ---				|
+|	init		| beforeCreate  |	所在声明周期时间点一致，只是重命名；此钩子函数无data 无method 					|
+|				|				|						|
