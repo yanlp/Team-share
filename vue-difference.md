@@ -106,10 +106,11 @@
     }
 </script>
 ```
-    ![页面初始渲染过程](./assets/img/init.png)
-    ![页面更新渲染过程](./assets/img/update.png)
-    ![页面更新+销毁渲染过程](./assets/img/update+destroy.png)
-    ![页面销毁后过程](./assets/img/destroyed.png)
+
+ ![页面初始渲染过程](./assets/img/init.png)
+ ![页面更新渲染过程](./assets/img/update.png)
+ ![页面更新+销毁渲染过程](./assets/img/update+destroy.png)
+ ![页面销毁后过程](./assets/img/destroyed.png)
 
 >PS: 这种创建实例的方法中 beforeMount 打印的结果，与预期不符合???? why!!!;
 
@@ -131,7 +132,7 @@
     </script>
 ```
 
-![换一种方式过程](./assets/img/ather.png)
+ ![换一种方式过程](./assets/img/ather.png)
 
 > 总结 console 结果	
 	*  ** beforeCreate: ** 即将创建,此阶段为组件实例初始化之后，此时的数据观察和事件机制都未形成 
@@ -148,6 +149,8 @@
         可以看到，到当执行钩子函数created时，complier还没有将template解析成render方法，DOM自然不能获取;
 
 	* **beforeMount: ** 在挂载开始之前被调用：相关的 render 函数首次被调用。
+        > > vue实例和DOM其实是分开的两个概念，然而，vue实例的必须和DOM相关联并改变DOM才能完成它的使命。这就需要将Vue挂载到DOM上。因此，vue提供了一个el参数来确定挂载的DOM节点。当我们根据vue构造函数new出一个Vue时，只要设定了这个el元素，那么这个新的Vue一切操作将只对这个el及其子元素有效。
+        > > 虽然依然得不到具体的DOM元素，但vue挂载的根节点已经创建，下面vue对DOM的操作将围绕这个el继续进行。在这个阶段vue成功获得了DOM王国国王--根元素el的信任，之后vue通过掌控“数据驱动”这台国家机器获得了对DOM王国的绝对统治权，“挟天子以令诸侯”，vue的所有命令都将在对DOM每个元素的控制中得到精确执行;
 	*  ** mounted: ** el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内。
     *  ** beforeUpdate: ** 数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。 可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。
     * ** updated: ** 由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于DOM操作。然而在大多数情况下，你应该避免在此期间更改状态，因为这可能会导致更新无限循环。该钩子在服务器端渲染期间不被调用。
