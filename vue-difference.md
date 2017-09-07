@@ -2,4 +2,5 @@
 ## 生命周期对比表格
 
 vue1.x	| vue2.x | 基本描述|
+:---|---|---|
 init	| beforeCreate|vjk|
