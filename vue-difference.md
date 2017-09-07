@@ -1,4 +1,4 @@
-# VUE 1.0 迁移 2.0 所遇到的洼地
+# VUE 生命周期小结
 ## 1、生命周期对比表格
 <div style="display: block;width: 700px;max-height: 800px;white-space: nowrap;">
     <span style="display: inline-block; width: 300px">
@@ -9,14 +9,14 @@
     </span>
 </div>
 
-|   vue1.x      |   vue2.x      |           基本描述                                                            |
+|   vue1.x      |   vue2.x      |          基本描述                                                          |
 |   :---        |       ---     |            ---                                                            |
-|   init        | beforeCreate  |   组件实例刚被创建，其属性如data等计算之前                                      |
-|   created     |   created     |   组件实例创建完毕，   属性已绑定，但dom还未生成,Vue.$el属性暂不存在                |
+|   init        | beforeCreate  |   组件实例刚被创建，其属性如data等计算之前                                     |
+|   created     |   created     |   组件实例创建完毕，属性已绑定，但dom还未生成,Vue.$el属性暂不存在                |
 | beforeCompile |    -          |   模板编译之前                                                              |
 |   -           | beforeMount   |   模板挂载之前                                                              |
 |  complied     |    -          |   模板编译之后                                                              |
-|  ready        |   mounted     |   模板编译/挂载之后（不能保证组件完全在document里）                           |
+|  ready        |   mounted     |   模板编译/挂载之后（不能保证组件完全在document里）                            |
 |   -           |   beforeUpdate|   组件更新之前                                                              |
 |   -           |   updated     |   组件更新之后                                                              |
 |   -           |   activated   |   for keep-alive,组件被激活使用                                              |
