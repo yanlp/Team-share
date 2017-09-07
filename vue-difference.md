@@ -20,7 +20,7 @@
 |   -           |   beforeUpdate|   组件更新之前                                                              |
 |   -           |   updated     |   组件更新之后                                                              |
 |   -           |   activated   |   for keep-alive,组件被激活使用                                              |
-|   —           |   deactivated |   for keeo-alive,组件被移除使用                                              |
+|   -           |   deactivated |   for keeo-alive,组件被移除使用                                              |
 |   attached    |   -           |   废弃                                                                      |
 |   deattached  |   -           |   废弃                                                                      |
 | beforeDestroy | beforeDestroy |   组件被销毁前调用                                                            |
@@ -132,9 +132,9 @@
     </script>
 ```
 
-    | | |
+ |    |     |
  |:---|:---:|
- |![换一种方式过程](./assets/img/ather.png)| |
+ |![换一种方式过程](./assets/img/ather.png)|  null  |
 
 > 总结 console 结果
 
@@ -156,7 +156,7 @@
    
 **beforeMount:** 在挂载开始之前被调用：相关的 render 函数首次被调用。    
    > > vue实例和DOM其实是分开的两个概念，然而，vue实例的必须和DOM相关联并改变DOM才能完成它的使命。这就需要将Vue挂载到DOM上。因此，vue提供了一个el参数来确定挂载的DOM节点。当我们根据vue构造函数new出一个Vue时，只要设定了这个el元素，那么这个新的Vue一切操作将只对这个el及其子元素有效。
-   
+
    > > 虽然依然得不到具体的DOM元素，但vue挂载的根节点已经创建，下面vue对DOM的操作将围绕这个el继续进行。在这个阶段vue成功获得了DOM王国国王--根元素el的信任，之后vue通过掌控“数据驱动”这台国家机器获得了对DOM王国的绝对统治权，“挟天子以令诸侯”，vue的所有命令都将在对DOM每个元素的控制中得到精确执行;     
      
 **mounted:** el被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内.
