@@ -38,7 +38,7 @@
 
 * 在index.html文件中添加iframe，通过控制iframe的contentDocument，实现两个js文件之间的`交互`;
 
-* [document.domain DEMO](http://mcbeta.jd.com/demo/index.html)
+* [🌰 document.domain DEMO](http://mcbeta.jd.com/demo/index.html)
 
 > ps:某一页面的domain默认等于window.location.hostname。主域名是不带mcbeta的域名，例如jd.com，
 主域名前面带前缀的通常都为二级域名或多级域名，例如 mcbeta.jd.com其实是二级域名。 domain只能设置为主域名，不可以在mcbeta.jd.com中将domain设置为beta-mcdata.jd.com。
@@ -64,7 +64,7 @@
 	* mcbeta.jd.com/app.html       应用页面
 	* mcbeta.jd.com/proxy.html     代理文件（空白页面）
 	* beta-mcdata.jd.com/index.php 应用页面需要获取数据的页面，可称为数据页面
-* [window.name DEMO](http://mcbeta.jd.com/demo/app.html)
+* [🌰 window.name DEMO](http://mcbeta.jd.com/demo/app.html)
 
 > 优点：
 
@@ -97,7 +97,7 @@
 
 	* 与此同时，hash.html上加一个定时器，隔一段时间来判断location.hash的值有没有变化，一点有变化则获取获取hash值;
 
-* [location Hash DEMO](http://mcbeta.jd.com/hash.html)
+* [🌰 location Hash DEMO](http://mcbeta.jd.com/hash.html)
 
 > 缺点
 
@@ -159,7 +159,7 @@
 	* origin: 发送消息的 window 的源。
 
 	* data: 数据。
-	
+
 	* source: 发送消息的 Window 对象。
 
 
