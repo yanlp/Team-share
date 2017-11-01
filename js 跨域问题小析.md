@@ -34,7 +34,7 @@
 
 * 在index.html文件中添加iframe，通过控制iframe的contentDocument，实现两个js文件之间的`交互`;
 
-* document.domain(http://mcbeta.jd.com/demo/index.html)
+* [document.domain](http://mcbeta.jd.com/demo/index.html)
 
 > ps:某一页面的domain默认等于window.location.hostname。主域名是不带mcbeta的域名，例如jd.com，
 主域名前面带前缀的通常都为二级域名或多级域名，例如 mcbeta.jd.com其实是二级域名。 domain只能设置为主域名，不可以在mcbeta.jd.com中将domain设置为beta-mcdata.jd.com。
