@@ -24,7 +24,19 @@
 
 > URL的首部: `window.location.protocol + window.location.host` <=> `Domain, protocols and ports must match`;
 
-### §、document.domain+iframe的设置 （双向跨域）
+> Content
+
+* §、document.domain+iframe的设置 
+
+* §、window.name+iframe的设置
+
+* §、利用iframe和location.hash
+
+* §、动态创建script
+
+* §、使用HTML5 postMessage
+
+### §、document.domain+iframe的设置 
 
 > 使用场景 
 
@@ -47,7 +59,7 @@
 * 安全性，当一个站点（b.a.com）被攻击后，另一个站点（c.a.com）会引起安全漏洞。
 * 如果一个页面中引入多个iframe，要想能够操作所有iframe，必须都得设置相同domain。
 
-### §、window.name+iframe的设置 （单向跨域）
+### §、window.name+iframe的设置 
 > 历史
 
 * window.name 传输技术，原本是 Thomas Frank 用于解决 cookie 的一些劣势（每个域名 4 x 20 Kb 的限制、数据只能是字符串、设置和获取 cookie 语法的复杂等等）而发明的（详细见原文：《Session variables without cookies》），后来 Kris Zyp 在此方法的基础上强化了 window.name 传输 ，并引入到了 Dojo （dojox.io.windowName），用来解决跨域数据传输问题
@@ -101,7 +113,7 @@
 
 * 数据容量、类型有限、数据暴露在url上
 
-### §、动态创建script（单向跨域）
+### §、动态创建script
 
 > 使用场景
 
@@ -123,7 +135,7 @@
 	* jsonp只支持GET请求，不支持POST请求
 
 
-### §、使用HTML5 postMessage （双向跨域）
+### §、使用HTML5 postMessage
 
 > 使用背景
 
