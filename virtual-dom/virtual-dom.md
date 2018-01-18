@@ -188,7 +188,8 @@ element.js
     var TEXT = 3
 ```
 如：
-    1. div --> section 、 添加 data-type 属性 'section'
+1. div --> section 、 添加 data-type 属性 'section'
+
 ```javascript
     patches[0]= [{
           type: REPALCE,
@@ -200,7 +201,10 @@ element.js
           }
         }]
 ```
-    2. 如果同一层级标签顺序互换， 也需要更新js对象dom，涉及到两个列表的差异对比，<a href="./libs/diff.js" target="_blank">具体见diff.js</a>
+    
+
+2. 如果同一层级标签顺序互换， 也需要更新js对象dom，涉及到两个列表的差异对比，<a href="./libs/diff.js" target="_blank">具体见diff.js</a>
+
 
 >  步骤三：把差异应用到真正的DOM树上
 
