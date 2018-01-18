@@ -38,11 +38,86 @@
     }
 ```
 
-==> 生成html文件
+<==> 生成html文件
 ```html
     <ul id='list'>
       <li class='item'>Item 1</li>
       <li class='item'>Item 2</li>
       <li class='item'>Item 3</li>
     </ul>
+```
+
+总结: DOM 树的信息都可以用 JavaScript 对象来表示，反过来，可根据这个用js对象表示的树结构来构建一棵真正的DOM树
+渲染不同点： 1>、 原生dom方式，重新渲染整个视图
+           2>、V-D: 首先重新渲染这个JS的对象结构，其次，对比新老树的差异，记录差异， 最后，作用到真正dom，渲染有变更的dom;
+> 算法总结
+
+    1、用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中
+    2、当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异
+    3、把2所记录的差异应用到步骤1所构建的真正的DOM树上，视图就更新了
+
+## 算法实现
+
+> 步骤一：用JS对象模拟DOM树
+
+用 JavaScript 来表示一个 DOM 节点是很简单的事情，你只需要记录它的节点类型、属性，还有子节点:
+
+element.js
+```javascript
+    function Element (tagName, props, children) {
+      this.tagName = tagName
+      this.props = props
+      this.children = children
+    }
+
+    module.exports = function (tagName, props, children) {
+      return new Element(tagName, props, children)
+    }
+```
+<==> 利用上述方法，dom可描述如下：
+```javascript
+    var el = require('./element')
+
+    var ul = el('ul', {id: 'list'}, [
+      el('li', {class: 'item'}, ['Item 1']),
+      el('li', {class: 'item'}, ['Item 2']),
+      el('li', {class: 'item'}, ['Item 3'])
+    ])
+```
+<==> 将js表示的dom对象，渲染成真正的dom树
+```javascript
+    Element.prototype.render = function () {
+      var el = document.createElement(this.tagName) // 根据tagName构建
+      var props = this.props
+
+      for (var propName in props) { // 设置节点的DOM属性
+        var propValue = props[propName]
+        el.setAttribute(propName, propValue)
+      }
+
+      var children = this.children || []
+
+      children.forEach(function (child) {
+        var childEl = (child instanceof Element)
+          ? child.render() // 如果子节点也是虚拟DOM，递归构建DOM节点
+          : document.createTextNode(child) // 如果字符串，只构建文本节点
+        el.appendChild(childEl)
+      })
+
+      return el
+    }
+```
+
+<==> 利用render方法，渲染将js对象结构渲染到真正的dom树；
+```javascript
+    var ulRoot = ul.render()
+    document.body.appendChild(ulRoot)
+    
+    /* 生成dom
+    <ul id='list'>
+      <li class='item'>Item 1</li>
+      <li class='item'>Item 2</li>
+      <li class='item'>Item 3</li>
+    </ul>
+    */
 ```
