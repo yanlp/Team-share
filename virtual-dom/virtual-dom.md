@@ -37,7 +37,7 @@
 
     VText 虚拟文本节点，代表了一个真实的文本节点。内容中若有 HTML 会被转义。
 
-### V-D算法
+### V-D算法思想
 > 用js实现dom对象, dom树的结构、属性、文本可用js表示如下：
 
 ```javascript
@@ -148,9 +148,11 @@ element.js
 2、 深度优先遍历，记录差异
 
 在深度优先遍历的时候，每遍历到一个节点就把该节点和新的的树进行对比。如果有差异的话就记录到一个对象里面。
+
 <div style="text-align: center;">
     <img src="./deep.png" alt="" width="500">
 </div>
+
 
 ```javascript
     // diff 函数，对比两棵树
