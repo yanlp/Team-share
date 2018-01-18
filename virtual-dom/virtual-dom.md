@@ -9,11 +9,21 @@
 
 > V-D Vs Nature-Dom
 
-    1、innerHTML: render html string + 重新创建所有 DOM 元素
-    2、V-D: render Virtual DOM + diff + 必要的 DOM 更新
+    1、V-D: render Virtual DOM + diff + 必要的 DOM 更新
+    2、innerHTML: render html string + 重新创建所有 DOM 元素
 
+原生dom渲染过程： 以非 webkit内核浏览器为例：
+<img src="./dom.png" width="500">
+1、HTML解析出DOM Tree
+
+2、CSS解析出Style Rules
+
+3、将二者关联生成Render Tree
+
+4、Layout 根据Render Tree计算每个节点的信息
+
+5、Painting 根据计算好的信息绘制整个页面
 总结: 降低了调用dom的渲染次数的开销、提高了页面渲染性能；
-> V-D Vs MVVM
 
 ### 基本概念
 
@@ -257,6 +267,7 @@ element.js
 ```
 
 ### 总结
+V-D 算法实现dom渲染，具体代码实现：
 ```javascript
     // 1. 构建虚拟DOM
     var tree = el('div', {'id': 'container'}, [
