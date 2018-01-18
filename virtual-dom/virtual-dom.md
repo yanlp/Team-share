@@ -7,6 +7,7 @@
 ## why choose V-D？ 
 
 > V-D Vs Nature-Dom
+
     1、innerHTML: render html string + 重新创建所有 DOM 元素
     2、V-D: render Virtual DOM + diff + 必要的 DOM 更新
 
@@ -21,7 +22,7 @@
     VText 虚拟文本节点，代表了一个真实的文本节点。内容中若有 HTML 会被转义。
 
 ## V-D算法
-> 用js实现dom对象
+> 用js实现dom对象, dom树的结构、属性、文本可用js表示如下：
 
 ```javascript
     var element = {
@@ -35,4 +36,13 @@
         {tagName: 'li', props: {class: 'item'}, children: ["Item 3"]},
       ]
     }
+```
+
+==> 生成html文件
+```html
+    <ul id='list'>
+      <li class='item'>Item 1</li>
+      <li class='item'>Item 2</li>
+      <li class='item'>Item 3</li>
+    </ul>
 ```
