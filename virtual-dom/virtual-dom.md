@@ -112,7 +112,7 @@ element.js
 ```javascript
     var ulRoot = ul.render()
     document.body.appendChild(ulRoot)
-    
+
     /* 生成dom
     <ul id='list'>
       <li class='item'>Item 1</li>
@@ -121,3 +121,11 @@ element.js
     </ul>
     */
 ```
+
+> 步骤二：比较两棵虚拟DOM树的差异
+
+比较两棵DOM树的差异是 V-D 算法最核心的部分，这也是所谓的 Virtual DOM 的 diff 算法。两个树的完全的 diff 算法是一个时间复杂度为 O(n^3) 的问题。但是在前端当中，你很少会跨越层级地移动DOM元素。所以 Virtual DOM 只会对同一个层级的元素进行对比
+
+<div>
+    <img src="../diff.png" alt="" width="500">
+</div>
