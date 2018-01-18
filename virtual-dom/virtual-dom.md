@@ -31,8 +31,10 @@
 ### 基本概念
 
 > vNode 
+
     VNode 虚拟节点，它可以代表一个真实的 dom 节点。通过 createElement 方法能将 VNode 渲染成 dom 节点。
 > vText
+
     VText 虚拟文本节点，代表了一个真实的文本节点。内容中若有 HTML 会被转义。
 
 ### V-D算法
