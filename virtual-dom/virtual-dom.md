@@ -13,7 +13,10 @@
     2、innerHTML: render html string + 重新创建所有 DOM 元素
 
 原生dom渲染过程： 以非 webkit内核浏览器为例：
+
 <img src="./dom.png" width="500">
+
+
 1、HTML解析出DOM Tree
 
 2、CSS解析出Style Rules
