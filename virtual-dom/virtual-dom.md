@@ -1,5 +1,5 @@
 
-# 一、 Virtual-Dom 初识
+#  Virtual-Dom 初识
 
 ### 前言
 
@@ -125,8 +125,129 @@ element.js
 
 > 步骤二：比较两棵虚拟DOM树的差异
 
-比较两棵DOM树的差异是 V-D 算法最核心的部分，这也是所谓的 Virtual DOM 的 diff 算法。两个树的完全的 diff 算法是一个时间复杂度为 O(n^3) 的问题。但是在前端当中，你很少会跨越层级地移动DOM元素。所以 Virtual DOM 只会对同一个层级的元素进行对比
+1、比较两棵DOM树的差异是 V-D 算法最核心的部分，这也是所谓的 Virtual DOM 的 diff 算法。两个树的完全的 diff 算法是一个时间复杂度为 O(n^3) 的问题。但是在前端当中，你很少会跨越层级地移动DOM元素。所以 Virtual DOM 只会对同一个层级的元素进行对比
 
-<div>
+<div style="text-align: center;">
     <img src="./diff.png" alt="" width="500">
 </div>
+2、 深度优先遍历，记录差异
+
+在深度优先遍历的时候，每遍历到一个节点就把该节点和新的的树进行对比。如果有差异的话就记录到一个对象里面。
+<div style="text-align: center;">
+    <img src="./deep.png" alt="" width="500">
+</div>
+
+```javascript
+    // diff 函数，对比两棵树
+    function diff (oldTree, newTree) {
+      var index = 0 // 当前节点的标志
+      var patches = {} // 用来记录每个节点差异的对象
+      dfsWalk(oldTree, newTree, index, patches)
+      return patches
+    }
+
+    // 对两棵树进行深度优先遍历
+    function dfsWalk (oldNode, newNode, index, patches) {
+      // 对比oldNode和newNode的不同，记录下来
+      patches[index] = [...]
+
+      diffChildren(oldNode.children, newNode.children, index, patches)
+    }
+
+    // 遍历子节点
+    function diffChildren (oldChildren, newChildren, index, patches) {
+      var leftNode = null
+      var currentNodeIndex = index
+      oldChildren.forEach(function (child, i) {
+        var newChild = newChildren[i]
+        currentNodeIndex = (leftNode && leftNode.count) // 计算节点的标识
+          ? currentNodeIndex + leftNode.count + 1
+          : currentNodeIndex + 1
+        dfsWalk(child, newChild, currentNodeIndex, patches) // 深度遍历子节点
+        leftNode = child
+      })
+    }
+```
+
+上面的div和新的div有差异，当前的标记是0，那么：
+
+```javascript
+    patches[0] = [{difference}, {difference}, ...] // 用数组存储新旧节点的不同
+```
+同理p是patches[1]，ul是patches[3]，类推
+
+3、差异类型
+    1、替换掉原来的节点，例如把上面的div换成了section
+    2、移动、删除、新增子节点，例如上面div的子节点，把p和ul顺序互换
+    3、修改了节点的属性
+    4、对于文本节点，文本内容可能会改变。例如修改上面的文本节点2内容为Virtual DOM 2。
+```javascript
+    var REPLACE = 0
+    var REORDER = 1
+    var PROPS = 2
+    var TEXT = 3
+```
+如：
+    1. div --> section 、 添加 data-type 属性 'section'
+```javascript
+    patches[0]= [{
+          type: REPALCE,
+          node: newNode // el('section', props, children)
+        }, {
+          type: PROPS,
+          props: {
+            dataType: "section"
+          }
+        }]
+```
+    2. 如果同一层级标签顺序互换， 也需要更新js对象dom，涉及到两个列表的差异对比，<a href="./libs/diff.js" target="_blank">具体见diff.js</a>
+
+>  步骤三：把差异应用到真正的DOM树上
+
+因为步骤一所构建的 JavaScript 对象树和render出来真正的DOM树的信息、结构是一样的。所以我们可以对那棵DOM树也进行深度优先的遍历，遍历的时候从步骤二生成的patches对象中找出当前遍历的节点差异，然后进行 DOM 操作
+
+```javascript
+    function patch (node, patches) {
+      var walker = {index: 0}
+      dfsWalk(node, walker, patches)
+    }
+
+    function dfsWalk (node, walker, patches) {
+      var currentPatches = patches[walker.index] // 从patches拿出当前节点的差异
+
+      var len = node.childNodes
+        ? node.childNodes.length
+        : 0
+      for (var i = 0; i < len; i++) { // 深度遍历子节点
+        var child = node.childNodes[i]
+        walker.index++
+        dfsWalk(child, walker, patches)
+      }
+
+      if (currentPatches) {
+        applyPatches(node, currentPatches) // 对当前节点进行DOM操作
+      }
+    }
+    // applyPatches，根据不同类型的差异对当前节点进行 DOM 操作：
+
+    function applyPatches (node, currentPatches) {
+      currentPatches.forEach(function (currentPatch) {
+        switch (currentPatch.type) {
+          case REPLACE:
+            node.parentNode.replaceChild(currentPatch.node.render(), node)
+            break
+          case REORDER:
+            reorderChildren(node, currentPatch.moves)
+            break
+          case PROPS:
+            setProps(node, currentPatch.props)
+            break
+          case TEXT:
+            node.textContent = currentPatch.content
+            break
+          default:
+            throw new Error('Unknown patch type ' + currentPatch.type)
+        }
+      })
+    }
+```
