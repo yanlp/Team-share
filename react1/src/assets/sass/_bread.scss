@@ -1,0 +1,64 @@
+// 面包屑
+.bread-nav-wrap{
+	display: inline-block;
+	width: 100%;
+	height: 30px;
+	line-height:30px;
+}
+.main-content{
+	display:block;
+	background-color:#fff;
+	min-height:400px;
+	padding-bottom: 40px;
+	.main-content-title{
+		display: block;
+		padding: 25px 10px 15px 20px;
+	}
+	.title-wrap{
+		white-space: nowrap;
+		.item,.icon{
+			display: inline-block;
+			vertical-align: middle;
+			color: $normalfontColor;
+			font-size: 12px;	
+		}
+		.title{
+			font-size: 18px;
+		}
+		.sub-title{
+			font-size: 12px;
+		}
+		.icon-left-line{
+			width: 4px;
+			height: 18px;
+			background-color:$globalColor;
+		}
+		.icon-star{
+			color: $warnColor;
+		}
+	}
+	.main-content-body{
+		display: block;
+		padding-left: 40px;
+		.form-item{
+			width: 100%;
+		}
+		.normal-ipt{
+			display: inline-block;
+			border-color:$inputBorderColor;
+		}
+		.remind-text{
+			display: inline-block;
+			padding-left: 10px;
+		}
+	}
+	.img-wrap{
+		display: block;
+		background-color:#bcbcbc;
+		width: 120px;
+		height: 60px;
+	}
+	.inline-wrap{
+		display: inline-block;
+	}
+}

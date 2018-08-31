@@ -1,0 +1,123 @@
+/*
+ * @Author: willhu
+ * @Date: 2017-09-21 20:49:14
+ * @Last Modified by: weilihua
+ * @Last Modified time: 2017-11-29 16:10:30
+ */
+
+// color
+// 主色
+$primary-color         : #209CFF;
+$primary-color-hover   : lighten($primary-color, 10%);
+$primary-color-click   : darken($primary-color, 5%);
+
+// 释义颜色
+$notice-color          : #20A0FF;
+$success-color         : #13CE66;
+$warning-color         : #F7BA2A;
+$error-color           : #FF4949;
+
+// 中性色
+$title-color           : #252525;
+$text-color            : #666666;
+$text-color-tip        : #999999;
+$text-color-disabled   : #CCCCCC;
+$border-color          : #D9D9D9;
+
+$split-color           : #EDEDED;
+$border-bg-color      : #F7F7F7;
+$border-bg-color-light: #F8F8F9;
+$white                 : #FFFFFF;
+
+$link-color: $primary-color;
+$link-color-hover: $primary-color-hover;
+$link-color-active: $primary-color-click;
+
+$disabled-text-color: $text-color-disabled;
+$disabled-border-color: $split-color;
+$disabled-bg-color:$border-bg-color;
+
+// font
+$font-family     : "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+$code-family     : Consolas,Menlo,Courier,monospace;
+$font-title-main : 20px;
+$font-title-base : 18px;
+$font-title-small: 16px;
+$font-size-large : 16px;
+$font-size-base  : 14px;
+$font-size-small : 13px;
+$font-size-assist: 12px;
+$line-height-base: 1.4;
+
+// background-color
+$background-color: $white;
+
+// button-base
+$button-font-weight     : normal;
+$button-padding-base       : 4px 16px;
+$button-padding-large      : 6px 18px;
+$button-padding-small      : 2px 10px;
+$button-font-size          : $font-size-base;
+$button-font-size-large    : $font-size-large;
+$button-font-size-small    : $font-size-small;
+$button-border-radius      : 2px;
+
+
+// 默认按钮
+$button-bg-default: $border-bg-color;
+$button-border-default:$border-color;
+$botton-color-default:$text-color;
+
+// 主色按钮
+$button-bg-primary: $primary-color;
+$button-border-primary:$primary-color;
+$botton-color-primary:$white;
+
+// 幽灵按钮
+$button-bg-ghost: transparent;
+$button-border-ghost:$border-color;
+$botton-color-ghost:$text-color;
+
+
+// input
+$input-bg-color: $white;
+$input-border-color: $border-color;
+$input-border-color-hover: $text-color-tip;
+$input-border-color-focus: #5BB4FB;
+$input-border-color-error: $error-color;
+
+$input-font-size-sm: $font-size-assist;
+$input-font-size-base: $font-size-base;
+$input-font-size-lg: $font-size-base;
+$input-border-radius: 2px;
+
+$input-padding-sm: 4px;
+$input-padding-base: 8px;
+$input-padding-lg: 10px;
+
+
+// radio
+$radio-bg-color: $white;
+$radio-color-normal: $border-color;
+$radio-color-select: $primary-color;
+
+// checkbox
+
+$checkbox-bg-color: $white;
+$checkbox-bg-color-select: $white;
+$checkbox-color-normal: $border-color;
+$checkbox-color-select: $primary-color;
+
+//switch
+$switch-bg-color: $white;
+$switch-bg-color-on: $primary-color;
+$switch-bg-color-off: #CCCCCC;
+$switch-bg-color-on-colorful: $success-color;
+$switch-bg-color-off-colorful: $error-color;
+$checkbox-bg-color-disabled: #F0F0F0;
+
+//select
+$select-bg-color: $white;
+$select-border-color: $border-color;
+$select-border-color-hover: $text-color-tip;
+$select-border-color-focus: #5BB4FB;

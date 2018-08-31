@@ -1,0 +1,100 @@
+/*
+ * @Author: weilihua
+ * @Date: 2017-11-22 15:54:03
+ * @Last Modified by: weilihua
+ * @Last Modified time: 2017-11-23 15:10:46
+ */
+
+ @import "../custom/variables.scss";
+
+ .sp-switch {
+   cursor: pointer;
+   margin: 0;
+   height: 22px;
+   line-height: 22px;
+   display: inline-block;
+   input {
+     display: none;
+     &:checked {
+       + .sp-switch--text {
+         text-align: left;
+         background-color: $switch-bg-color-on;
+         padding-left: 8px;
+         padding-right: 22px;
+         &:before {
+           left: calc(100% - 20px);
+         }
+       }
+     }
+   }
+ }
+
+.sp-switch--text {
+  background-color: $switch-bg-color-off;
+  display: inline-block;
+  vertical-align: top;
+  min-width: 44px;
+  height: 100%;
+  border-radius: 22px;
+  padding: 0 8px;
+  padding-left: 22px;
+  color: $white;
+  position: relative;
+  user-select: none;
+  font-size: 12px;
+  text-align: right;
+  &:before {
+    position: absolute;
+    content: '';
+    left: 2px;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    background-color: $white;
+    border-radius: 50%;
+    transition: left .2s;
+  }
+}
+
+//sm
+.sp-switch_sm {
+  height: 14px;
+  line-height: 14px;
+  //text
+  .sp-switch--text {
+    min-width: 28px;
+    border-radius: 14px;
+    padding-left: 14px;
+    &:before {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  input:checked + .sp-switch--text{
+    padding-right: 14px;
+    &:before{
+      left: calc(100% - 12px);
+    }
+  }
+}
+
+//disabled
+.sp-switch_disabled {
+  cursor: not-allowed;
+  //text
+  .sp-switch--text {
+    background-color: $checkbox-bg-color-disabled;
+  }
+}
+
+
+//type = colorful
+.sp-switch_colorful {
+  //text
+  .sp-switch--text {
+    background-color: $switch-bg-color-off-colorful;
+  }
+  input:checked + .sp-switch--text{
+    background-color: $switch-bg-color-on-colorful;
+  }
+}

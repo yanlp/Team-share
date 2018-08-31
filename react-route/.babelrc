@@ -1,0 +1,11 @@
+
+  {
+    "presets":["react","env"],
+    "env":{
+      "development": {
+        "presets":["react-hmre"]
+      }
+    },
+    "plugins": [["transform-react-jsx"],
+    ["transform-class-properties", { "spec": true }]]
+  }

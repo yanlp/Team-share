@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>domain 跨域问题</title>
+</head>
+<body>
+    
+<iframe id="iframe" src="http://beta-mcdata.jd.com/demo/iframeIndex.html"></iframe>
+<script>
+    var iframe = document.getElementById('iframe');
+
+    document.domain = 'example.com';
+
+    iframe.contentDocument; // 框架的 document 对象
+    iframe.contentWindow; // 框架的 window 对象
+</script>
+</body>
+</html>

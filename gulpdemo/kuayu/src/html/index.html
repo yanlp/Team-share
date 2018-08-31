@@ -1,0 +1,28 @@
+<!-- 
+http://www.cnblogs.com/dolphinX/p/3464056.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域问题测试</title>
+</head>	
+<body>
+	<div style="width:200px; float:left; margin-right:200px;border:solid 1px #333;">
+        <div id="color">Frame Color</div>
+    </div>
+    <div>
+        <iframe id="child" src="http://localhost:6090/views/demo/index.html"></iframe>
+    </div>
+	<script type="text/javascript">
+		 window.onload=function(){
+            window.frames[0].postMessage('init getcolor from iframe dom','http://localhost:6090');
+        }
+        window.addEventListener('message',function(e){
+            var color=e.data;
+            console.log(e.origin,e.source)
+            document.getElementById('color').style.backgroundColor=color;
+         },false);
+	</script>
+</body>
+</html>

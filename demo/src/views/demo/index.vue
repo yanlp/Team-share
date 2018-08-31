@@ -12,6 +12,9 @@
     <div class="node">message:{{message}}</div>
     <a href="javacript:;" @click="update">更新</a>
     <a href="javacript:;" @click="destroy">销毁</a>
+    <div id="container" @click="changeColor" style="widht:100%; height:100%; background-color:rgb(204, 102, 0);">
+             click to change color
+         </div>
 </div>
 </template>
 <script>
@@ -20,7 +23,8 @@ export default {
     data(){
     	return {
     		message:"this is a test Data!!",
-            isDestroy:false
+            isDestroy:false,
+            container:null
     	}
     },  
     beforeCreate: function () {
@@ -48,6 +52,16 @@ export default {
         console.log(this.$el);    
         console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
         console.log("%c%s", "color:red","message: " + this.message); //已被初始化 
+
+        this.$nextTick(function(){
+            this.container=document.getElementById('container');
+            window.addEventListener('message',function(e){
+                if(e.source!=window.parent) return;
+                var color = container.style.backgroundColor;
+                window.parent.postMessage(color,'*');
+            },false);
+            
+        })
     },
     beforeUpdate: function () {
         console.group('this is beforeUpdate ===============》');
@@ -98,7 +112,18 @@ export default {
                 this.$destroy();
                 this.isDestroy = true;
             }.bind(this),1000)
-        }
+        },
+        changeColor (e) {            
+             var color= this.container.style.backgroundColor;
+             if(color=='rgb(204, 102, 0)'){
+                 color='rgb(204, 204, 0)';
+             }else{
+                 color='rgb(204,102,0)';
+             }
+             this.container.style.backgroundColor=color;
+             window.parent.postMessage(color,'http://localhost:3000');
+         }
     }
 }
+
 </script>

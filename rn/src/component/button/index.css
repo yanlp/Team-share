@@ -1,0 +1,15 @@
+
+.btn {
+	display: block;
+	padding: 5px 9px;
+	border: 1px solid #eee;
+	cursor: pointer;
+	&:hover {
+		opacity: 0.5;
+	}
+}
+.lp-btn {
+	width: 200px;
+	border: 1px solid #39f;
+	background: #39f;
+}

@@ -1,0 +1,28 @@
+/* variable */
+$globalColor:#208bff;
+$alphaGlobalColor15: rgba(32,139,255,.15);
+$disableColor: #bbb;
+$warnColor:   #f00;
+
+/* background */
+$bodyBgColor:   #fff;
+$buttonBgColor: $globalColor;
+$grayBg : $disableColor;
+
+/* font */
+$normalfontColor: #333;
+$globalfontColor: $globalColor;
+$fontNormalSize: 14px;
+$hoverColor:#dd2222;
+$activeColor:#77bb55;
+$outOfDateColor:$normalfontColor;
+$notbeginColor:#FFCF8D;
+$ingColor:#77BB54;
+
+// border
+$borderNormalColor:$globalColor;
+$borderGrayColor: #dcdcdc;
+$boderLightColor: #aaa;
+$buttonBorderColor:#999;
+$inputBorderColor: #dbdbdb;
+

@@ -1,0 +1,10 @@
+body {
+  background: #d2d2d2;
+  color: #f20;
+  background: #a4ddb1; }
+
+div {
+  box-sizing: border-box;
+  transition: all 1s ease;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg); }

@@ -1,0 +1,88 @@
+// table list
+.table-list{
+	display:block;
+	padding-bottom: 20px;
+	padding:  10px;
+}
+.table-title{
+	position:relative;
+	text-align:center;
+	height: 40px;
+	margin-bottom: 5px;
+}
+.table-list-filter-title{
+	display:inline-block;
+	height: 30px;
+	line-height: 29px;
+	border:1px solid $globalColor;
+	border-radius:5px;
+	margin: 0 auto;
+	overflow:hidden;
+	.item{
+		float: left;
+		padding: 0 10px;
+		text-align:center;
+		color: $buttonBorderColor;
+		border-right:1px solid $globalColor;
+		cursor: pointer;
+		&.active{
+			background-color:$globalColor;
+			color:#fff;
+		}
+		&:last-child{
+			border-right:none;
+		}
+	}
+}
+.table-list-wrap{
+	display:block;
+	width: 1000px;
+}
+.ivu-table-row{
+	.waitfor-check-number{
+		color: $hoverColor;
+	}
+	.check-number{
+		color:#333;
+	}
+	&.normal {
+		.waitfor-check-number{
+			color: $normalfontColor;
+		}
+	}
+}
+// table
+.ivu-table-tbody{
+	td{
+		text-align:center;
+		padding:10px 0 ;
+		min-width: 80px;
+		white-space: nowrap;
+	}
+}
+table th .ivu-table-cell{
+	font-weight:normal;
+}
+table td .ivu-table-cell{
+	padding: 10px 6px;
+    font-weight: normal;
+}
+// table 空提醒
+.table-empty-wrap{
+	display: block;
+	position: relative;
+	padding:20px 0;
+	text-align:center;
+	>.icon{
+		display: block;
+		margin: 0 auto;
+		@include sprite($icon-empty-info);
+	}
+	.text{
+		display: inline-block;
+		text-align: center;
+		font-size: 16px;
+		color:$boderLightColor;
+		margin-top: 10px;
+	}
+}

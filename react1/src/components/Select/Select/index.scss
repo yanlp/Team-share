@@ -1,0 +1,79 @@
+/*
+ * @Author: weilihua
+ * @Date: 2017-11-28 16:13:45
+ * @Last Modified by: weilihua
+ * @Last Modified time: 2017-11-29 17:56:51
+ */
+
+ @import "../../custom/variables.scss";
+
+ .sp-select{
+  display: inline-block;
+  vertical-align: middle;
+ }
+  .sp-select-selection{
+  background-color: $select-bg-color;
+  border: 1px solid $select-border-color;
+  border-radius: 4px;
+  height: 32px;
+  box-sizing: border-box;
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  &:hover{
+    border-color: $select-border-color-hover;
+  }
+}
+.sp-select_visible .sp-select-selection{
+  &, &:hover{
+    border-color: $select-border-color-focus;
+  }
+  .icon-triangle-down{
+    transform: rotate(180deg);
+  }
+}
+.sp-select-selection .icon-triangle-down{
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  font-size: 12px;
+  margin-top: -6px;
+  transition: all 0.2s ease-in-out;
+}
+ .sp-select input{
+  display:inline-block;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  border: none;
+  outline: 0;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0 24px 0 8px;
+  background-color: transparent;
+  cursor: pointer;
+ }
+.sp-select-dropdown{
+  display: none;
+  max-height: 200px;
+  background-color: white;
+  overflow: auto;
+  padding: 5px 0;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  border-radius: 4px;
+  z-index: 900;
+  position: absolute;
+}
+.sp-select_visible .sp-select-dropdown{
+  display: block;
+}
+.sp-select-dropdown .sp-select-dropdown-list li{
+  padding: 7px 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+  &:hover{
+    background-color: #f3f3f3;
+  }
+}
