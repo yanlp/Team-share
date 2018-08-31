@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浅谈重绘重排</title>
+    <style>
+        .wrap {
+            display: block;
+            margin: 0 auto;
+        }
+        .clear {
+            display: block;
+            zoom: 1;
+        }
+        .clear::after,.clear::before {
+            content: '';
+            clear:both;
+        }
+        .wrap .layer {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap clear">
+        <h1>浅谈重绘重排</h1>
+        <div class="layer layer-1">
+            <!-- <a href="javascript:;" id="test">测试一</a> -->
+            <div id="layer-1-content"></div>
+        </div>
+        <div class="layer layer-2">
+            <!-- <a href="javascript:;" id="test1">测试二</a> -->
+            <div id="layer-2-content"></div>
+        </div>
+        <div class="layer layer-3">
+            <!-- <a href="javascript:;" id="test2">测试三</a> -->
+            <div id="layer-3-content"></div>
+        </div>
+    </div>
+    <script>
+       function test() {
+            var date = new Date();
+            for (var i = 0; i < 7000; i++) {
+                var tmpNode = document.createElement("div");
+                tmpNode.innerHTML = "test" + i;
+                document.getElementById('layer-1-content').appendChild(tmpNode);
+            }
+            console.log("speed time", new Date() - date); // 约731
+        }
+        function test1() {
+            var date = new Date();
+            for (var i = 0; i < 7000; i++) {
+                var tmpNode = document.createElement("div");
+                tmpNode.innerHTML = "test" + i;
+                document.getElementById('layer-2-content').offsetHeight; // 获取body的真实值
+                document.getElementById('layer-2-content').appendChild(tmpNode);
+            }
+            console.log("speed time", new Date() - date); // 约20095ms
+        }
+        function test2() {
+            var date = new Date();
+            let fragementDom = document.createDocumentFragment();
+            for (var i = 0; i < 7000; i++) {
+                var tmpNode = document.createElement("div");
+                tmpNode.innerHTML = "test" + i;
+                fragementDom.appendChild(tmpNode);
+            }
+            document.getElementById('layer-3-content').appendChild(fragementDom);
+            console.log("speed time", new Date() - date); // 约47ms
+        }
+       /*  document.getElementById('test').onclick = test;
+        document.getElementById('test1').onclick = test1;
+        document.getElementById('test2').onclick = test2; */
+        document.addEventListener('DOMContentLoaded', function () {
+            /* 代码片段 */
+            test2();
+             /* layout + update_layout + paint + composite = 37.16 + 8.9 + 2.92 + 0.16 */
+            /* 一次次渲染 */
+            // test(); 
+            /* layout + update_layout + paint + composite = 3.9 + 0.88 + 0.76 + 0.13 */
+            /* 从flush中取值 */
+            /* layout + update_layout + paint + composite = 0.63 + 1.15 + 0.87 + 0.12 */
+            // test1();
+
+        });
+    </script>
+</body>
+</html>
