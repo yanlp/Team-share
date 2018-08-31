@@ -42,7 +42,7 @@
     <script>
        function test() {
             var date = new Date();
-            for (var i = 0; i < 7000; i++) {
+            for (var i = 0; i < 70000; i++) {
                 var tmpNode = document.createElement("div");
                 tmpNode.innerHTML = "test" + i;
                 document.getElementById('layer-1-content').appendChild(tmpNode);
@@ -51,7 +51,7 @@
         }
         function test1() {
             var date = new Date();
-            for (var i = 0; i < 7000; i++) {
+            for (var i = 0; i < 700; i++) {
                 var tmpNode = document.createElement("div");
                 tmpNode.innerHTML = "test" + i;
                 document.getElementById('layer-2-content').offsetHeight; // 获取body的真实值
@@ -75,10 +75,10 @@
         document.getElementById('test2').onclick = test2; */
         document.addEventListener('DOMContentLoaded', function () {
             /* 代码片段 */
-            test2();
+            // test2();
              /* layout + update_layout + paint + composite = 37.16 + 8.9 + 2.92 + 0.16 */
             /* 一次次渲染 */
-            // test(); 
+            test(); 
             /* layout + update_layout + paint + composite = 3.9 + 0.88 + 0.76 + 0.13 */
             /* 从flush中取值 */
             /* layout + update_layout + paint + composite = 0.63 + 1.15 + 0.87 + 0.12 */
