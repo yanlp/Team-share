@@ -20,13 +20,16 @@
   * 可通过 `cat .git/HEAD`或`git symbolic-ref HEAD`查看当前HEAD指向的提交记录。
   * 相对引用: 通过 `HEAD^`上移一个记录或者`git checkout HEAD~[num]`移动多条记录，完成当前的HEAD指向。
 * 撤销变更：撤销变更由底层部分（暂存区的独立文件或者片段）和上层部分（变更到底是通过哪种方式被撤销的）组成
-  * git reset: 通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。git reset 向上移动分支，原来指向的提交记录就跟从来没有提交过一样
+  * git reset: 完成local即本地分支撤销。通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。git reset 向上移动分支，原来指向的提交记录就跟从来没有提交过一样
   ![git reset HEAD~1](./git-reset.jpg)
-  * git revert: 产生新的提交记录，新提交记录 C2' 引入了更改 —— 这些更改刚好是用来撤销 C2 这个提交的。也就是说 C2' 的状态与 C1 是相同的。revert 之后就可以把你的更改推送到远程仓库与别人分享啦。
+  * git revert: 完成远程分支撤销。产生新的提交记录，新提交记录 C2' 引入了更改 —— 这些更改刚好是用来撤销 C2 这个提交的。也就是说 C2' 的状态与 C1 是相同的。revert 之后就可以把你的更改推送到远程仓库与别人分享啦。
   ![git revert HEAD~1](./git-revert.jpg)
-
  
+* 整理提交记录
+  * `git cherry-pick <提交号>...`如果你想将一些提交复制到当前所在的位置（HEAD）下面的话，Cherry-pick 是最直接的方式了。【关键点】需要记住每个提交的commitID
 
+  ![DEMO git cherry-pick C2 C4](./git-cherry-pick.png)
+  *`交互式的 rebase`
 
 ### 1.1 获取git仓库的方法
 
