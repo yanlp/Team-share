@@ -16,8 +16,12 @@
 
 ### 高级命令
 
-* `HEAD`
-
+* `HEAD`一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。
+  * 可通过 `cat .git/HEAD`或`git symbolic-ref HEAD`查看当前HEAD指向的提交记录。
+  * 相对引用: 通过 `HEAD^`上移一个记录或者`git checkout HEAD~[num]`移动多条记录，完成当前的HEAD指向。
+* 撤销变更：撤销变更由底层部分（暂存区的独立文件或者片段）和上层部分（变更到底是通过哪种方式被撤销的）组成
+  * git reset
+  * git revert
 
  
 
