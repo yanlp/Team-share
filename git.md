@@ -32,6 +32,18 @@
   *`交互式的 rebase` 实现多个commit提交记录合并，需要基于一个分支或者一个commit
   ID来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。git rebase –abort；
 
+具体使用步骤如下：
+
+step1： `git rebase -i HEAD~2` 设置前面两个commit记录为基准；如图有两条关于rebase总结内容的提交。
+![git rebase -i HEAD~2](./git-rebase-log1.jpg)
+
+step2：修改最后一条记录的commit messge修改如下
+
+![combined commit message](./result.png)
+
+step3: 查看log信息
+![result log](./log2.png)
+
 
 ### 1.1 获取git仓库的方法
 
