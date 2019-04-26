@@ -20,8 +20,7 @@
   * 可通过 `cat .git/HEAD`或`git symbolic-ref HEAD`查看当前HEAD指向的提交记录。
   * 相对引用: 通过 `HEAD^`上移一个记录或者`git checkout HEAD~[num]`移动多条记录，完成当前的HEAD指向。
 * 撤销变更：撤销变更由底层部分（暂存区的独立文件或者片段）和上层部分（变更到底是通过哪种方式被撤销的）组成
-  * git reset: 通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。git reset 向上移动分支，原来指向的提交记录就跟从来没有提交过一样。
-  ![git reset HEAD~1](./git-reset.png)
+  * git reset
   * git revert
 
  
