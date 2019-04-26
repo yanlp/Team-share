@@ -29,7 +29,11 @@
   * `git cherry-pick <提交号>...`如果你想将一些提交复制到当前所在的位置（HEAD）下面的话，Cherry-pick 是最直接的方式了。【关键点】需要记住每个提交的commitID
 
   ![DEMO git cherry-pick C2 C4](./git-cherry-pick.png)
-  *`交互式的 rebase`
+  *`交互式的 rebase` 需要基于一个分支或者一个commit
+  ID来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。git rebase –abort；
+
+  hello
+
 
 ### 1.1 获取git仓库的方法
 
