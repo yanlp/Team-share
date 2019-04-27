@@ -44,6 +44,7 @@ step2：修改最后一条记录的commit messge修改如下
 step3: 查看log信息
 ![result log](./log2.png)
 
+### 提交记录管理
 
 ### 1.1 获取git仓库的方法
 
